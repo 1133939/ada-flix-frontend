@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Mini Projeto Flix</title>
+</head>
+<body>
+
+<h1>Sistema Flix</h1>
+
+<button onclick="chamarEndpoint('/flix/cadastrar')">
+    Cadastrar
+</button>
+
+<button onclick="chamarEndpoint('/flix/avaliar-filme')">
+    Avaliar Filme
+</button>
+
+<button onclick="chamarEndpoint('/flix/top-filmes-mais-populares')">
+    Top Filmes Mais Populares
+</button>
+
+<button onclick="chamarEndpoint('/flix/genero-melhor-avaliacao-media')">
+    Gênero com Melhor Avaliação Média
+</button>
+
+<button onclick="chamarEndpoint('/flix/pais-assiste-mais-filmes')">
+    País que mais assiste filmes
+</button>
+
+<hr>
+
+<h3>Resposta da API:</h3>
+<p id="resultado">Clique em um botão para chamar a API</p>
+
+<script>
+function chamarEndpoint(endpoint) {
+    fetch(endpoint)
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("resultado").innerText = data;
+        })
+        .catch(error => {
+            document.getElementById("resultado").innerText =
+                "Erro ao chamar o endpoint";
+        });
+}
+</script>
+
+</body>
+</html>
